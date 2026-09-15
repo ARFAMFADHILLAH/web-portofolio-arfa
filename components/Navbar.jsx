@@ -2,17 +2,11 @@
 
 import { useEffect, useState } from "react";
 import ThemeToggle from "@/components/ThemeToggle";
-
-const links = [
-  { href: "#about", label: "Tentang" },
-  { href: "#projects", label: "Proyek" },
-  { href: "#experience", label: "Pengalaman" },
-  { href: "#contact", label: "Kontak" },
-];
+import { useLocale } from "@/app/i18n";
 
 export default function Navbar() {
+  const { locale, setLocale, t } = useLocale();
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -26,54 +20,21 @@ export default function Navbar() {
         scrolled ? "glass-nav" : "bg-transparent"
       }`}
     >
-      <div className="font-mono text-sm text-accent tracking-widest uppercase">
+      <a href="#hero" className="font-mono text-sm text-accent tracking-widest uppercase">
         AMF / Portfolio
-      </div>
-      <div className="flex items-center gap-3 md:gap-8">
-        <ul className="hidden md:flex gap-10 list-none">
-          {links.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="nav-link-item relative font-mono text-sm tracking-wide text-muted hover:text-cream transition-colors"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <ThemeToggle />
+      </a>
+      <div className="flex items-center gap-3">
         <button
-          onClick={() => setOpen(!open)}
-          aria-label="Buka menu"
-          className="md:hidden w-10 h-10 glass rounded-full flex items-center justify-center text-cream"
+          onClick={() => setLocale(locale === "id" ? "en" : "id")}
+          aria-label={t.nav.langToggle}
+          className="glass rounded-full px-3 py-1.5 font-mono text-xs tracking-widest uppercase flex items-center gap-1.5 hover:text-accent transition-colors"
         >
-          {open ? (
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M18 6 6 18M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M3 6h18M3 12h18M3 18h18" />
-            </svg>
-          )}
+          <span className={locale === "id" ? "text-accent" : "text-muted"}>ID</span>
+          <span className="text-border">/</span>
+          <span className={locale === "en" ? "text-accent" : "text-muted"}>EN</span>
         </button>
+        <ThemeToggle />
       </div>
-
-      {open && (
-        <div className="md:hidden absolute top-[72px] right-5 left-5 glass-strong rounded-2xl p-3 flex flex-col z-[110]">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className="px-4 py-3 font-mono text-base text-muted hover:text-accent hover:bg-[var(--glass-bg)] rounded-xl transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-      )}
     </nav>
   );
 }

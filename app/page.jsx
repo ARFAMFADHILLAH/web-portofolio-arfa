@@ -7,10 +7,14 @@ import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Tools from "@/components/Tools";
+import BottomNav from "@/components/BottomNav";
+import { LocaleProvider } from "@/app/i18n";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen overflow-x-clip">
+    <LocaleProvider>
+      <div className="relative min-h-screen overflow-x-clip">
       <Background />
       <CustomCursor />
       <Navbar />
@@ -18,11 +22,14 @@ export default function Home() {
       <main className="relative z-10">
         <Hero />
         <About />
+        <Tools />
         <Projects />
         <Experience />
         <Contact />
         <Footer />
       </main>
-    </div>
+      <BottomNav />
+      </div>
+    </LocaleProvider>
   );
 }

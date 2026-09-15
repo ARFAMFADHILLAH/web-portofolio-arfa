@@ -1,25 +1,29 @@
 # Portofolio Arfa Muhammad Fadhillah
 
-Portofolio pribadi berbasis web dengan gaya **glassmorphism**, palet **biru & putih**, serta dukungan **mode gelap & terang**.
+Portofolio pribadi berbasis web dengan gaya **glassmorphism**, palet **biru & putih**, dukungan **mode gelap / terang**, dan **dua bahasa (Indonesia / English)**.
 
 Dibangun dengan **Next.js 15** + **Tailwind CSS v4** + **React 19**.
 
 ## Fitur
 
 - 🪟 Desain glassmorphism (glass ring, inner highlight, blur)
-- 🌗 Mode gelap / terang dengan toggle, tersimpan di `localStorage`
-- 🎨 Palet identitas biru & putih
-- 📱 Responsif (desktop, tablet, mobile) — menu hamburger di layar kecil
+- 🌗 Mode gelap / terang, tersimpan di `localStorage`
+- 🌐 Dua bahasa (ID / EN) via toggle di navbar, preferensi disimpan di `localStorage`
+- 🧭 Bottom navigation (desktop + mobile) dengan scrollspy aktif
+- 🧰 Tools marquee bergerak terus-menerus, berhenti saat hover
+- 📁 Karya dengan galeri foto (gambar dari `public/img/projects/`)
+- 📄 CV modal preview + tombol download (`public/cv/cv-arfa.pdf`)
 - 💻 Custom cursor, animasi reveal saat scroll, skill bar animasi
 - 🔤 Font Cormorant Garamond & DM Mono via `next/font`
 
 ## Daftar Isi Halaman
 
-- **Hero** — pengantar + foto + statistik (tahun, proyek, klien)
+- **Hero** — pengantar + foto + statistik (tahun, proyek, klien) + tombol CV
 - **Tentang Saya** — deskripsi + keahlian teknis
-- **Karya Terpilih** — galeri proyek
-- **Perjalanan Karir** — timeline pengalaman
-- **Kontak** — email & sosial media
+- **Tools & Teknologi** — marquee per bidang (web, mobile, cyber security)
+- **Karya Terpilih** — galeri proyek + tautan
+- **Perjalanan Karir** — timeline pengalaman dengan logo perusahaan
+- **Kontak** — email, CV, & sosial media
 
 ## Cara Menjalankan
 
@@ -35,7 +39,21 @@ npm run build      # build produksi
 npm run start      # jalankan server produksi
 ```
 
-> ⚠️ Jangan jalankan `npm run dev` dan `npm run build` secara bersamaan — keduanya memakai folder `.next` yang sama dan bisa merusak cache (error `Cannot find module './139.js'`). Selalu jalankan satu saja.
+### Lint
+
+```bash
+npm run lint       # ESLint (eslint.config.mjs)
+```
+
+## Asset yang Disediakan Pengguna
+
+| Path | Isi |
+|---|---|
+| `public/img/projects/<slug>.png` | Foto karya (slug: `car-management-radius`, `kasirku`, `cymbal-track-app`, `perpustakaan-40`, `employee-salary-management`, `bumata`) |
+| `public/img/logos/<nama>.png` | Logo perusahaan Experience (`radius-allkindo`, `rizqy-utama`, `groperti`, `bumataritama`) |
+| `public/cv/cv-arfa.pdf` | File CV untuk tombol download |
+
+> Asset yang belum ada otomatis memakai fallback (placeholder / inisial), jadi situs tetap bisa dijalankan tanpa asset.
 
 ## Teknologi
 
@@ -51,11 +69,13 @@ npm run start      # jalankan server produksi
 ```
 ├── app/
 │   ├── layout.jsx       # Root layout, font, metadata
-│   ├── page.jsx         # Halaman utama
+│   ├── page.jsx         # Halaman utama (bungkus LocaleProvider)
+│   ├── i18n.jsx         # LocaleProvider + useLocale
+│   ├── icon.svg         # Favicon
 │   └── globals.css      # Tema, variabel CSS, glass effect
-├── components/          # Background, Navbar, Hero, About, dst.
-├── public/img/          # Asset gambar
-└── tmp-old/             # Versi lama (HTML/CSS/JS)
+├── components/          # Navbar, BottomNav, Hero, Tools, Projects, dst.
+├── data/                # translations.js, projects.js
+└── public/              # img/, cv/
 ```
 
 ---

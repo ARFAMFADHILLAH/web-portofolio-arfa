@@ -14,14 +14,40 @@ const dmMono = DM_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+  ),
   title: "Arfa Muhammad Fadhillah — Portfolio",
   description:
-    "Portofolio Arfa Muhammad Fadhillah — Software Engineer. Merancang pengalaman digital yang bermakna.",
+    "Arfa Muhammad Fadhillah Portfolio — Software Engineer. Crafting meaningful digital experiences.",
+  openGraph: {
+    title: "Arfa Muhammad Fadhillah — Portfolio",
+    description:
+      "Software Engineer & Developer. Crafting meaningful digital experiences.",
+    type: "website",
+    locale: "en_US",
+    alternateLocale: "id_ID",
+    images: [
+      {
+        url: "/img/arfa.jpeg",
+        width: 640,
+        height: 640,
+        alt: "Arfa Muhammad Fadhillah",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Arfa Muhammad Fadhillah — Portfolio",
+    description:
+      "Software Engineer & Developer. Crafting meaningful digital experiences.",
+    images: ["/img/arfa.jpeg"],
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id" className={`${cormorant.variable} ${dmMono.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${dmMono.variable}`} suppressHydrationWarning>
       <body className="antialiased bg-bg text-cream font-serif text-lg leading-relaxed">
         <script
           dangerouslySetInnerHTML={{

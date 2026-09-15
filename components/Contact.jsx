@@ -1,3 +1,9 @@
+"use client";
+
+import { useState } from "react";
+import CVModal from "@/components/CVModal";
+import { useLocale } from "@/app/i18n";
+
 const socials = [
   {
     label: "LinkedIn",
@@ -42,32 +48,57 @@ const socials = [
 ];
 
 export default function Contact() {
+  const { t } = useLocale();
+  const [cvOpen, setCvOpen] = useState(false);
+
   return (
-    <section id="contact" className="px-6 md:px-20 py-32 text-center">
+    <section id="contact" className="px-6 md:px-20 py-20 md:py-32 text-center scroll-mt-20">
       <div className="font-mono text-sm tracking-[0.15em] text-accent uppercase mb-7">
-        Mari Berkolaborasi
+        {t.contact.kicker}
       </div>
       <h2 className="contact-title font-serif font-normal tracking-tight leading-[1.1] mb-7">
-        Ada proyek yang ingin
+        {t.contact.title1}
         <br />
-        kita wujudkan <em className="italic text-accent">bersama?</em>
+        {t.contact.title2}{" "}
+        <em className="italic text-accent">{t.contact.title3}</em>
       </h2>
       <p className="text-lg text-muted font-light leading-[1.8] max-w-md mx-auto mb-14">
-        Terbuka untuk proyek freelance, konsultasi desain, dan peluang kolaborasi
-        jangka panjang.
+        {t.contact.desc}
       </p>
 
-      <div className="flex justify-center mb-14">
+      <div className="flex justify-center flex-col md:flex-row items-center gap-3 md:gap-4 max-w-md mx-auto mb-14">
         <a
           href="mailto:arfamuhammadfadhillah3@gmail.com"
-          className="inline-flex items-center gap-3 font-mono text-sm tracking-wide uppercase text-white bg-gradient-to-r from-accent to-accent-soft px-10 py-4 rounded-full shadow-lg shadow-accent/25 hover:-translate-y-0.5 hover:shadow-accent/50 transition-all"
+          className="inline-flex items-center justify-center gap-3 font-mono text-sm tracking-wide uppercase w-full md:w-auto text-white bg-gradient-to-r from-accent to-accent-soft px-10 py-4 rounded-full shadow-lg shadow-accent/25 hover:-translate-y-0.5 hover:shadow-accent/50 transition-all"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
             <path d="M4 4h16v16H4z" />
             <path d="M22 6l-10 7L2 6" />
           </svg>
-          Kirim Email
+          {t.contact.cta}
         </a>
+        <a
+          href="/cv/cv-arfa.pdf"
+          download={t.cv.name}
+          className="inline-flex items-center justify-center gap-3 font-mono text-sm tracking-wide uppercase w-full md:w-auto text-cream glass glass-card rounded-full px-10 py-4 hover:text-accent transition-colors"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <path d="m7 10 5 5 5-5" />
+            <path d="M12 15V3" />
+          </svg>
+          {t.contact.downloadCv}
+        </a>
+        <button
+          onClick={() => setCvOpen(true)}
+          className="inline-flex items-center justify-center gap-3 font-mono text-sm tracking-wide uppercase w-full md:w-auto text-cream glass glass-card rounded-full px-10 py-4 hover:text-accent transition-colors"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+          {t.contact.viewCv}
+        </button>
       </div>
 
       <div className="flex justify-center gap-9 flex-wrap">
@@ -84,6 +115,8 @@ export default function Contact() {
           </a>
         ))}
       </div>
+
+      <CVModal open={cvOpen} onClose={() => setCvOpen(false)} />
     </section>
   );
 }

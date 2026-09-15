@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLocale } from "@/app/i18n";
 
 export default function ThemeToggle() {
+  const { t } = useLocale();
   const [dark, setDark] = useState(true);
 
   useEffect(() => {
@@ -20,7 +22,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggle}
-      aria-label="Ganti tema"
+      aria-label={t.nav.themeTool}
       className="w-10 h-10 glass rounded-full flex items-center justify-center text-accent hover:scale-110 transition-transform"
     >
       {dark ? (
