@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import CVModal from "@/components/CVModal";
 import { useLocale } from "@/app/i18n";
 
 const socials = [
@@ -49,7 +47,6 @@ const socials = [
 
 export default function Contact() {
   const { t } = useLocale();
-  const [cvOpen, setCvOpen] = useState(false);
 
   return (
     <section id="contact" className="px-6 md:px-20 py-20 md:py-32 text-center scroll-mt-20">
@@ -89,16 +86,6 @@ export default function Contact() {
           </svg>
           {t.contact.downloadCv}
         </a>
-        <button
-          onClick={() => setCvOpen(true)}
-          className="inline-flex items-center justify-center gap-3 font-mono text-sm tracking-wide uppercase w-full md:w-auto text-cream glass glass-card rounded-full px-10 py-4 hover:text-accent transition-colors"
-        >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-            <circle cx="12" cy="12" r="3" />
-          </svg>
-          {t.contact.viewCv}
-        </button>
       </div>
 
       <div className="flex justify-center gap-9 flex-wrap">
@@ -115,8 +102,6 @@ export default function Contact() {
           </a>
         ))}
       </div>
-
-      <CVModal open={cvOpen} onClose={() => setCvOpen(false)} />
     </section>
   );
 }

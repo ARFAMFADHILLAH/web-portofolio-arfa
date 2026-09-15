@@ -1,21 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
-import CVModal from "@/components/CVModal";
 import { useLocale } from "@/app/i18n";
 
 export default function Hero() {
   const { t } = useLocale();
-  const [cvOpen, setCvOpen] = useState(false);
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen grid grid-cols-1 lg:grid-cols-[1fr_420px] items-center gap-14 px-6 md:px-20 py-20 md:py-24 overflow-hidden scroll-mt-20"
+      className="relative min-h-screen grid grid-cols-1 lg:grid-cols-[1fr_420px] items-center gap-16 lg:gap-14 px-6 md:px-20 py-20 md:py-24 overflow-hidden scroll-mt-20"
     >
       {/* Content */}
-      <div className="relative z-10 flex flex-col justify-center">
+      <div className="relative z-10 flex flex-col justify-center order-2 lg:order-1">
         <div className="anim-fade-up-1 flex items-center gap-3 font-mono text-sm text-accent tracking-wide uppercase mb-7">
           <span className="inline-block w-6 h-px bg-accent" />
           {t.hero.badge}
@@ -44,59 +41,36 @@ export default function Hero() {
           >
             {t.hero.secondary}
           </a>
-          <button
-            onClick={() => setCvOpen(true)}
-            className="flex items-center justify-center font-mono text-sm tracking-wide uppercase text-center text-cream glass glass-card rounded-full px-9 py-4 hover:text-accent transition-colors"
-          >
-            {t.hero.viewCv}
-          </button>
-        </div>
-
-        <div className="anim-fade-up-6 lg:hidden glass glass-card rounded-2xl px-5 py-4 flex justify-between items-center gap-4 mt-8 max-w-md">
-          {[
-            ["3+", t.hero.years],
-            ["40+", t.hero.projects],
-            ["10", t.hero.clients],
-          ].map(([num, label]) => (
-            <div key={label} className="text-center flex-1">
-              <span className="block font-serif font-normal text-3xl text-accent leading-none">
-                {num}
-              </span>
-              <span className="block font-mono text-[12px] tracking-wide text-muted uppercase mt-1.5">
-                {label}
-              </span>
-            </div>
-          ))}
         </div>
       </div>
 
       {/* Photo */}
-      <div className="anim-fade-in-photo hidden lg:flex justify-center items-center relative z-10">
-        <div className="relative w-[340px] h-[420px] flex-shrink-0">
+      <div className="anim-fade-in-photo flex justify-center items-center relative z-10 order-1 lg:order-2">
+        <div className="relative w-[240px] h-[300px] sm:w-[300px] sm:h-[380px] lg:w-[340px] lg:h-[420px] flex-shrink-0">
           <div className="absolute -inset-4 rounded-[32px] bg-[var(--accent-dim)] opacity-60 blur-2xl" />
           <div className="glass-strong rounded-3xl w-full h-full overflow-hidden relative shadow-2xl shadow-black/40">
             <Image
               src="/img/arfa.jpeg"
               alt="Arfa Muhammad Fadhillah"
               fill
-              sizes="340px"
+              sizes="(max-width: 640px) 240px, (max-width: 1024px) 300px, 340px"
               className="object-cover contrast-[1.05] brightness-[0.92] hover:scale-105 transition-transform duration-[0.6s]"
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-white/10" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
           </div>
 
-          <div className="glass-strong rounded-2xl px-6 py-4 flex gap-6 justify-between absolute inset-x-4 bottom-4 -translate-x-2 z-10">
+          <div className="glass-strong rounded-2xl px-4 sm:px-6 py-3 sm:py-4 pb-4 sm:pb-4 lg:pb-0 flex gap-2 sm:gap-6 justify-between absolute inset-x-3 sm:inset-x-4 bottom-3 sm:bottom-4 z-10">
             {[
               ["3+", t.hero.years],
               ["40+", t.hero.projects],
               ["10", t.hero.clients],
             ].map(([num, label]) => (
               <div key={label} className="text-center">
-                <span className="block font-serif font-normal text-2xl text-accent leading-none">
+                <span className="block font-serif font-normal text-xl sm:text-2xl text-accent leading-none">
                   {num}
                 </span>
-                <span className="block font-mono text-[13px] tracking-wide text-muted uppercase mt-1">
+                <span className="block font-mono text-[11px] sm:text-[13px] tracking-wide text-muted uppercase mt-1">
                   {label}
                 </span>
               </div>
@@ -104,8 +78,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
-      <CVModal open={cvOpen} onClose={() => setCvOpen(false)} />
     </section>
   );
 }

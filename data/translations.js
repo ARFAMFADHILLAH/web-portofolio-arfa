@@ -17,7 +17,6 @@ export const translations = {
         "Crafting meaningful digital experiences — where aesthetics and impactful functionality meet.",
       primary: "See Work",
       secondary: "Contact Me",
-      viewCv: "View CV",
       years: "Years",
       projects: "Projects",
       clients: "Clients",
@@ -96,6 +95,28 @@ export const translations = {
         },
       ],
     },
+    education: {
+      title1: "Education",
+      title2: "Background",
+      items: [
+        {
+          period: "2019 — 2024",
+          degree: "SMA/SMK — Isi jurusan di sini",
+          school: "Isi nama sekolah di sini",
+          logo: "/img/logos/education-smkn1.png",
+          initials: "SK",
+          points: [],
+        },
+        {
+          period: "2025 — Present",
+          degree: "Kursus / Sertifikasi — Isi di sini",
+          school: "Isi nama kampus / lembaga di sini",
+          logo: "/img/logos/education-academy.png",
+          initials: "X",
+          points: [],
+        },
+      ],
+    },
     tools: {
       eyebrow: "Stack",
       title1: "Tools &",
@@ -149,7 +170,6 @@ export const translations = {
       title3: "together?",
       desc: "Open to freelance projects, design consultations, and long-term collaboration opportunities.",
       cta: "Send Email",
-      viewCv: "View CV",
       downloadCv: "Download CV",
     },
     footer: {
@@ -157,12 +177,7 @@ export const translations = {
       back: "Back to top",
     },
     cv: {
-      title: "Curriculum Vitae",
       name: "Arfa Muhammad Fadhillah",
-      role: "Software Engineer & Developer",
-      summary:
-        "Student and developer focused on clean, thoughtful digital products. Experience in web development, SEO, and IT support. Currently exploring mobile development and cyber security.",
-      close: "Close",
       download: "Download CV",
     },
   },
@@ -184,7 +199,6 @@ export const translations = {
         "Merancang pengalaman digital yang bermakna — di antara estetika dan fungsionalitas yang berdampak nyata.",
       primary: "Lihat Karya",
       secondary: "Hubungi Saya",
-      viewCv: "Lihat CV",
       years: "Tahun",
       projects: "Proyek",
       clients: "Klien",
@@ -263,6 +277,28 @@ export const translations = {
         },
       ],
     },
+    education: {
+      title1: "Pendidikan",
+      title2: "Formal",
+      items: [
+        {
+          period: "2019 — 2024",
+          degree: "SMA/SMK — Isi jurusan di sini",
+          school: "Isi nama sekolah di sini",
+          logo: "/img/logos/education-smkn1.png",
+          initials: "SK",
+          points: [],
+        },
+        {
+          period: "2025 — Sekarang",
+          degree: "Kursus / Sertifikasi — Isi di sini",
+          school: "Isi nama kampus / lembaga di sini",
+          logo: "/img/logos/education-academy.png",
+          initials: "X",
+          points: [],
+        },
+      ],
+    },
     tools: {
       eyebrow: "Stack",
       title1: "Tools &",
@@ -316,20 +352,14 @@ export const translations = {
       title3: "bersama?",
       desc: "Terbuka untuk proyek freelance, konsultasi desain, dan peluang kolaborasi jangka panjang.",
       cta: "Kirim Email",
-      viewCv: "Lihat CV",
       downloadCv: "Download CV",
     },
     footer: {
       crafted: "© 2026 Arfa Muhammad Fadhillah. Dibuat dengan teliti.",
       back: "Kembali ke atas",
     },
-    cv: {
-      title: "Curriculum Vitae",
+cv: {
       name: "Arfa Muhammad Fadhillah",
-      role: "Software Engineer & Developer",
-      summary:
-        "Mahasiswa dan pengembang yang fokus pada produk digital yang bersih dan bermakna. Berpengalaman di pengembangan web, SEO, dan IT support. Saat ini mendalami pengembangan mobile dan keamanan siber.",
-      close: "Tutup",
       download: "Download CV",
     },
   },
