@@ -9,13 +9,13 @@ function CompanyLogo({ logo, initials, alt }) {
   const [failed, setFailed] = useState(false);
 
   return (
-    <div className="absolute -left-[52px] md:-left-[68px] top-[3px] w-11 h-11 z-10">
-      {failed ? (
-        <div className="w-full h-full rounded-full flex items-center justify-center bg-gradient-to-br from-accent to-accent-soft text-white font-mono text-xs tracking-wider shadow-lg shadow-accent/30">
+    <div className="absolute -left-13 md:-left-17 top-0.75 w-11 h-11 z-10">
+      {failed || !logo ? (
+        <div className="w-full h-full rounded-full flex items-center justify-center bg-linear-to-br from-accent to-accent-soft text-white font-mono text-xs tracking-wider shadow-lg shadow-accent/30">
           {initials}
         </div>
       ) : (
-        <div className="w-full h-full rounded-full overflow-hidden border border-border bg-[var(--glass-bg)] flex items-center justify-center shadow-lg shadow-black/20">
+        <div className="w-full h-full rounded-full overflow-hidden border border-border bg-(--glass-bg) flex items-center justify-center shadow-lg shadow-black/20">
           <Image
             src={logo}
             alt={alt}
@@ -34,26 +34,29 @@ export default function Experience() {
   const { t } = useLocale();
   const experiences = t.experience.items;
   const [openIdx, setOpenIdx] = useState(null);
+  const [showAll, setShowAll] = useState(false);
 
   const toggle = (i) => setOpenIdx(openIdx === i ? null : i);
+  const visibleExperiences = showAll ? experiences : experiences.slice(0, 6);
+  const hasMore = experiences.length > 6;
 
   return (
     <section id="experience" className="px-6 md:px-20 py-20 md:py-28 scroll-mt-20">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-center gap-5 mb-16">
+        <div className="flex items-center gap-5 mb-10">
           <h2 className="section-title font-serif font-normal tracking-tight whitespace-normal md:whitespace-nowrap">
             {t.experience.title1}{" "}
             <em className="italic text-accent">{t.experience.title2}</em>
           </h2>
-          <div className="flex-1 h-px bg-border min-w-[20px]" />
+          <div className="flex-1 h-px bg-border min-w-5" />
         </div>
 
-        <div className="timeline-wrapper relative pl-[68px] md:pl-24 max-w-3xl">
-          {experiences.map((exp, i) => {
+        <div className="timeline-wrapper relative pl-17 md:pl-24 max-w-3xl">
+          {visibleExperiences.map((exp, i) => {
             const isOpen = openIdx === i;
             const hasDetail = exp.points.length > 0;
             return (
-              <Reveal key={exp.role + exp.period} delay={i * 0.08}>
+              <Reveal key={`${exp.company} — ${exp.period}`} delay={i * 0.08}>
                 <div
                   className={`relative pb-4 ${i === experiences.length - 1 ? "pb-2" : "pb-6"}`}
                 >
@@ -69,13 +72,20 @@ export default function Experience() {
                     className={`group text-left w-full rounded-2xl p-6 transition-all duration-300 ${
                       isOpen
                         ? "glass glass-card"
-                        : "hover:bg-[var(--glass-bg)]"
+                        : "hover:bg-(--glass-bg)"
                     }`}
                   >
                     <span className="flex items-start justify-between gap-4">
                       <span>
-                        <span className="block font-mono text-sm text-accent tracking-wide uppercase mb-2">
-                          {exp.period}
+                        <span className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                          <span className="font-mono text-sm text-accent tracking-wide uppercase">
+                            {exp.period}
+                          </span>
+                          {exp.tipe && (
+                            <span className="font-mono text-[10px] tracking-widest uppercase text-accent/80 border border-accent/30 rounded-full px-2.5 py-1">
+                              {exp.tipe}
+                            </span>
+                          )}
                         </span>
                         <span className="block text-[22px] font-normal tracking-tight mb-1">
                           {exp.role}
@@ -92,7 +102,7 @@ export default function Experience() {
                           fill="none"
                           stroke="currentColor"
                           strokeWidth="1.5"
-                          className={`text-muted flex-shrink-0 mt-1 transition-transform duration-300 ${
+                          className={`text-muted shrink-0 mt-1 transition-transform duration-300 ${
                             isOpen ? "rotate-180" : ""
                           }`}
                         >
@@ -129,6 +139,32 @@ export default function Experience() {
             );
           })}
         </div>
+
+        {hasMore && (
+          <div className="flex justify-center mt-12">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="inline-flex items-center gap-2.5 font-mono text-sm tracking-wide uppercase text-cream glass glass-card rounded-full px-8 py-3.5"
+            >
+              {showAll
+                ? t.experience.showLess
+                : `${t.experience.showAll} (${experiences.length})`}
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                className={`transition-transform duration-300 ${
+                  showAll ? "rotate-180" : ""
+                }`}
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

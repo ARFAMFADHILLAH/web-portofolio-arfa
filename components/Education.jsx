@@ -9,13 +9,13 @@ function SchoolLogo({ logo, initials, alt }) {
   const [failed, setFailed] = useState(false);
 
   return (
-    <div className="absolute -left-[52px] md:-left-[68px] top-[3px] w-11 h-11 z-10">
-      {failed ? (
-        <div className="w-full h-full rounded-full flex items-center justify-center bg-gradient-to-br from-accent to-accent-soft text-white font-mono text-xs tracking-wider shadow-lg shadow-accent/30">
+    <div className="absolute -left-13 md:-left-17 top-0.75 w-11 h-11 z-10">
+      {failed || !logo ? (
+        <div className="w-full h-full rounded-full flex items-center justify-center bg-linear-to-br from-accent to-accent-soft text-white font-mono text-xs tracking-wider shadow-lg shadow-accent/30">
           {initials}
         </div>
       ) : (
-        <div className="w-full h-full rounded-full overflow-hidden border border-border bg-[var(--glass-bg)] flex items-center justify-center shadow-lg shadow-black/20">
+        <div className="w-full h-full rounded-full overflow-hidden border border-border bg-(--glass-bg) flex items-center justify-center shadow-lg shadow-black/20">
           <Image
             src={logo}
             alt={alt}
@@ -45,10 +45,10 @@ export default function Education() {
             {t.education.title1}{" "}
             <em className="italic text-accent">{t.education.title2}</em>
           </h2>
-          <div className="flex-1 h-px bg-border min-w-[20px]" />
+          <div className="flex-1 h-px bg-border min-w-5" />
         </div>
 
-        <div className="timeline-wrapper relative pl-[68px] md:pl-24 max-w-3xl">
+        <div className="timeline-wrapper relative pl-17 md:pl-24 max-w-3xl">
           {items.map((item, i) => {
             const isOpen = openIdx === i;
             const hasDetail = item.points.length > 0;
@@ -67,7 +67,7 @@ export default function Education() {
                     aria-expanded={isOpen}
                     aria-label={`${item.school} — ${item.degree}`}
                     className={`group text-left w-full rounded-2xl p-6 transition-all duration-300 ${
-                      isOpen ? "glass glass-card" : "hover:bg-[var(--glass-bg)]"
+                      isOpen ? "glass glass-card" : "hover:bg-(--glass-bg)"
                     }`}
                   >
                     <span className="flex items-start justify-between gap-4">
@@ -90,7 +90,7 @@ export default function Education() {
                           fill="none"
                           stroke="currentColor"
                           strokeWidth="1.5"
-                          className={`text-muted flex-shrink-0 mt-1 transition-transform duration-300 ${
+                          className={`text-muted shrink-0 mt-1 transition-transform duration-300 ${
                             isOpen ? "rotate-180" : ""
                           }`}
                         >

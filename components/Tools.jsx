@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import { useLocale } from "@/app/i18n";
 import { toolIcons } from "@/data/tools";
@@ -12,13 +13,13 @@ function ToolChip({ name }) {
   return (
     <span className="marquee-item glass glass-card rounded-full font-mono text-sm text-cream whitespace-nowrap">
       {icon && !hideIcon && (
-        <img
+        <Image
           src={icon}
           alt=""
           width={20}
           height={20}
           aria-hidden="true"
-          className="w-5 h-5 flex-shrink-0"
+          className="w-5 h-5 shrink-0"
           onError={() => setHideIcon(true)}
         />
       )}
@@ -55,7 +56,7 @@ export default function Tools() {
             {t.tools.title1}{" "}
             <em className="italic text-accent">{t.tools.title2}</em>
           </h2>
-          <div className="flex-1 h-px bg-border min-w-[20px]" />
+          <div className="flex-1 h-px bg-border min-w-5" />
         </div>
 
         <Reveal>

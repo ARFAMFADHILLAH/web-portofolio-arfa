@@ -10,7 +10,7 @@ function SectionHeading({ title }) {
       <h2 className="section-title font-serif font-normal tracking-tight whitespace-normal md:whitespace-nowrap">
         {title}
       </h2>
-      <div className="flex-1 h-px bg-border min-w-[20px]" />
+      <div className="flex-1 h-px bg-border min-w-5" />
     </div>
   );
 }

@@ -77,7 +77,7 @@ export default function BottomNav() {
   ];
 
   return (
-    <nav className="fixed bottom-0 inset-x-0 z-[90] flex justify-center px-4 pb-[env(safe-area-inset-bottom)]">
+    <nav className="fixed bottom-0 inset-x-0 z-90 flex justify-center px-4 pb-[env(safe-area-inset-bottom)]">
       <div className="glass-strong rounded-t-2xl md:rounded-full md:bottom-4 w-full max-w-md md:max-w-3xl flex items-center justify-between gap-0.5 md:gap-1 px-2 py-2.5 md:px-2.5 md:mb-4 shadow-2xl shadow-black/30">
         {items.map((item) => (
           <a

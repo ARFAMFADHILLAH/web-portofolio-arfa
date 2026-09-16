@@ -59,11 +59,11 @@ export default function CustomCursor() {
     <>
       <div
         ref={cursorRef}
-        className="fixed z-[9999] w-2.5 h-2.5 rounded-full bg-accent -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+        className="fixed z-9999 w-2.5 h-2.5 rounded-full bg-accent -translate-x-1/2 -translate-y-1/2 pointer-events-none"
       />
       <div
         ref={ringRef}
-        className="fixed z-[9998] w-9 h-9 rounded-full border border-accent/50 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+        className="fixed z-9998 w-9 h-9 rounded-full border border-accent/50 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
         style={{ transition: "width 0.2s, height 0.2s, opacity 0.2s" }}
       />
     </>

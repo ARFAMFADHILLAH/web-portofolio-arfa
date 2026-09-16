@@ -19,11 +19,11 @@ export const metadata = {
   ),
   title: "Arfa Muhammad Fadhillah — Portfolio",
   description:
-    "Arfa Muhammad Fadhillah Portfolio — Software Engineer. Crafting meaningful digital experiences.",
+    "Arfa Muhammad Fadhillah Portfolio — Software Engineer · Android Developer · Security Researcher. Crafting meaningful digital experiences.",
   openGraph: {
     title: "Arfa Muhammad Fadhillah — Portfolio",
     description:
-      "Software Engineer & Developer. Crafting meaningful digital experiences.",
+      "Software Engineer · Android Developer · Security Researcher. Crafting meaningful digital experiences.",
     type: "website",
     locale: "en_US",
     alternateLocale: "id_ID",
@@ -40,7 +40,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Arfa Muhammad Fadhillah — Portfolio",
     description:
-      "Software Engineer & Developer. Crafting meaningful digital experiences.",
+      "Software Engineer · Android Developer · Security Researcher. Crafting meaningful digital experiences.",
     images: ["/img/arfa.jpeg"],
   },
 };

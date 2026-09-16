@@ -66,7 +66,7 @@ export default function Contact() {
       <div className="flex justify-center flex-col md:flex-row items-center gap-3 md:gap-4 max-w-md mx-auto mb-14">
         <a
           href="mailto:arfamuhammadfadhillah3@gmail.com"
-          className="inline-flex items-center justify-center gap-3 font-mono text-sm tracking-wide uppercase w-full md:w-auto text-white bg-gradient-to-r from-accent to-accent-soft px-10 py-4 rounded-full shadow-lg shadow-accent/25 hover:-translate-y-0.5 hover:shadow-accent/50 transition-all"
+          className="inline-flex items-center justify-center gap-3 font-mono text-sm tracking-wide uppercase w-full md:w-auto text-white bg-linear-to-r from-accent to-accent-soft px-10 py-4 rounded-full shadow-lg shadow-accent/25 hover:-translate-y-0.5 hover:shadow-accent/50 transition-all"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
             <path d="M4 4h16v16H4z" />

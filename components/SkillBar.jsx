@@ -29,7 +29,7 @@ export default function SkillBar({ label, width }) {
       </div>
       <div
         ref={ref}
-        className="h-[4px] rounded-full bg-border overflow-hidden"
+        className="h-1 rounded-full bg-border overflow-hidden"
       >
         <div
           className="skill-fill"
